@@ -1,10 +1,17 @@
 # Getting Started
 ## Development
-
+### unix, macOS
 Install and then run [Node Version Manager](https://github.com/nvm-sh/nvm):
 
 ```bash
 nvm use
+```
+### Windows
+Get version value from .nvmrc file.
+Install and then run [nvm-windows](https://github.com/coreybutler/nvm-windows):
+
+```bash
+nvm use {nodeVersionFromFile}
 ```
 
 Install node modules:
@@ -23,16 +30,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Production
 
-Build the production application:
-
-```bash
-npm run build
-```
-
 Run the production application:
 
-Install and then run [PM2](https://github.com/Unitech/pm2):
-
 ```bash
-pm2 start npm --name "client" -- start
+npm run build && npm run start
 ```
