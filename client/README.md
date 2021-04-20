@@ -34,6 +34,5 @@ Run the production application:
 Install and then run [PM2](https://github.com/Unitech/pm2):
 
 ```bash
-npm run build
 pm2 start npm --name "client" -- start
 ```
