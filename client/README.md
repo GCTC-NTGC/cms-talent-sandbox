@@ -1,5 +1,5 @@
-## Getting Started
-### Development
+# Getting Started
+## Development
 
 Install and then run [Node Version Manager](https://github.com/nvm-sh/nvm):
 
@@ -21,7 +21,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Production
+## Production
 
 Build the production application:
 
