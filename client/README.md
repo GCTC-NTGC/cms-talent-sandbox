@@ -28,6 +28,17 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Docker
+Build container with: 
+```bash
+docker build . -t client-next-js-app
+```
+
+Run container with: 
+```bash
+docker run -p 3000:3000 client-next-js-app
+```
+
 ## Production
 
 Run the production application:
