@@ -10,7 +10,7 @@
     "db:rollback": "knex migrate:rollback",
     "db:refresh": "knex migrate:rollback --all && knex migrate:latest",
     "db:seed": "knex seed:run",
-    "db:repl": "node --experimental-repl-await src/db/knexRepl.js",
+    "db:repl": "node --experimental-repl-await db/knexRepl.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

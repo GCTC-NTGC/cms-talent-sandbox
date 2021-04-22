@@ -3,15 +3,15 @@ Run `npm run start` from this directory to start a GraphQL API server. You can e
 
 Note that you will need a `.env` file that specifies the connection to your postgres database.
 
+Since this project is written in TypeScript, you may compile it to JS by running `npm run build`. The result will be in `./dist`.
+
 ### Data migrations
-If you want to edit the database schema, do so using knex.js migrations. 
+If you want to edit the database schema, do so using knex.js migrations.
 
-To create a new migration, run `npx knex migrate:make migration_name`. (Note that, for now, new migrations are created using `module.exports` syntax, and you must manually change this to ES6 module syntax.) The new migration will appear in `./src/db/migrations` (as specified in the knexfile.js config file).
+To create a new migration, run `npx knex migrate:make migration_name`. The new migration will appear in `./db/migrations` (as specified in the knexfile.js config file).
 
-To run migrations, run `npx knex migrate:latest`.
+Use the npm scripts `db:migrate`, `db:rollback`, `db:refresh`, and `db:seed` to run/rollback migrations and seeders.
 
-To rollback the most recent batch of migrations, run `npx knex migrate:rollback`. 
+You may also run `npm run db:repl` to experiment with knex commands directly in the colnsole. eg `await knex('users').where({id: 1})`
 
-For more details on how to write migrations see https://knexjs.org/#Schema.
-
-For more details on how the migrations CLI, see https://knexjs.org/#Migrations.
+For more details on how to write migrations and seeds or use migrations CLI, see https://knexjs.org/.
