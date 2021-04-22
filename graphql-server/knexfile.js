@@ -1,4 +1,6 @@
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
+require('ts-node/register');
+const dotenv = require("dotenv");
 
 const parsed = dotenv.config();
 
@@ -20,4 +22,5 @@ const config = {
   }
 };
 
-export default config;
+// export default config;
+module.exports = config;
