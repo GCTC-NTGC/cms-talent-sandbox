@@ -14,7 +14,7 @@ Install and then run [nvm-windows](https://github.com/coreybutler/nvm-windows):
 nvm use {nodeVersionFromFile}
 ```
 
-Install node modules:
+Install node packages:
 
 ```bash
 npm i
