@@ -1,4 +1,3 @@
-// import dotenv from "dotenv";
 require('ts-node/register');
 const dotenv = require("dotenv");
 
@@ -15,10 +14,10 @@ const config = {
   },
   migrations: {
     tableName: 'knex_migrations',
-    directory: './src/db/migrations'
+    directory: './db/migrations'
   },
   seeds: {
-    directory: './src/db/seeds' // This could be split into dev and production folders.
+    directory: './db/seeds' // This could be split into dev and production folders.
   }
 };
 
