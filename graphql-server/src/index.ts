@@ -1,6 +1,10 @@
 // import { ApolloServer } from "apollo-server";
 import { ApolloServer, gql } from 'apollo-server';
 import { DateResolver, EmailAddressResolver } from "graphql-scalars";
+import {UserDataSource} from "./datasources/user";
+import {JobDataSource} from "./datasources/job";
+import {ApplicationDataSource} from "./datasources/application";
+import knexConfig from "../knexfile.js";
 
 const typeDefs = gql`
 
@@ -93,19 +97,36 @@ const resolvers = {
     FR: "fr",
   },
   Query: {
-    users: () => users,
-    jobs: () => jobs,
-    applications: () => applications.map(appl => ({
-      ...appl,
-      job: jobs.find(job => job.id === appl.jobId),
-      user: users.find(user => user.id === appl.userId)
-    })),
+    users: async (_parent, _args, {dataSources} ) => {
+      return await dataSources.user.getAll();
+    },
+    jobs: async (_parent, _args, {dataSources} ) => {
+      return await dataSources.job.getAll();
+    },
+    applications: async (_parent, _args, {dataSources}) => {
+      const applications = await dataSources.application.getAll();
+      return applications.map(appl => ({
+        ...appl,
+        job: async () => await dataSources.job.getById(appl.jobId),
+        user: async () => await dataSources.user.getById(appl.userId),
+      }));
+    }
   },
 };
 
+const dataSources = () => ({
+  user: new UserDataSource(knexConfig),
+  job: new JobDataSource(knexConfig),
+  application: new ApplicationDataSource(knexConfig),
+});
+
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ 
+  typeDefs,
+  resolvers,
+  dataSources
+});
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {
