@@ -40,52 +40,19 @@ const typeDefs = gql`
 
   type Application {
     id: ID
-    job: Job
-    user: User
+    job: Job!
+    user: User!
     interest: String
     preferredLang: Locale
   }
 
   type Query {
     users: [User]
+    user(id: ID!): User
     jobs: [Job]
     applications: [Application]
   }
 `;
-
-const users = [
-  {
-    id: 1,
-    email: "test@applicant.com",
-    firstName: "Tristan",
-    lastName: "Applicant",
-  },
-  {
-    id: 2,
-    email: "bob@applicant.com",
-    firstName: "Bob",
-    lastName: "ApplicantTwo",
-  },
-];
-
-const jobs = [
-  {
-    id: 1, title: { en: "Junior Dev", fr: "Dev petit" }, description: { en: "You'll enjoy working on this awesome project!", fr: "Vous aimerez travaller sur ce projet genial!" },
-    minSalary: 60000, maxSalary: 70000,
-    closeDate: "2021-04-30",
-    startDate: "2021-06-01",
-  }
-];
-
-const applications = [
-  {
-    id: 1,
-    jobId: 1,
-    userId: 2,
-    interest: "I love awesome jobs, who doesn't",
-    preferredLang: "en",
-  }
-]
 
 // Resolvers define the technique for fetching the types defined in the
 // schema. This resolver retrieves books from the "books" array above.
@@ -98,20 +65,26 @@ const resolvers = {
   },
   Query: {
     users: async (_parent, _args, {dataSources} ) => {
-      return await dataSources.user.getAll();
+      return dataSources.user.getAll();
+    },
+    user: async (_parent, {id}, {dataSources}) => {
+      return dataSources.user.getById(id);
     },
     jobs: async (_parent, _args, {dataSources} ) => {
-      return await dataSources.job.getAll();
+      return dataSources.job.getAll();
     },
     applications: async (_parent, _args, {dataSources}) => {
-      const applications = await dataSources.application.getAll();
-      return applications.map(appl => ({
-        ...appl,
-        job: async () => await dataSources.job.getById(appl.jobId),
-        user: async () => await dataSources.user.getById(appl.userId),
-      }));
+      return dataSources.application.getAll();
     }
   },
+  Application: {
+    job(parent, _args, {dataSources}) {
+      return dataSources.job.getById(parent.jobId);
+    }, 
+    user(parent, _args, {dataSources}) {
+      return dataSources.user.getById(parent.userId);
+    }
+  }
 };
 
 const dataSources = () => ({
