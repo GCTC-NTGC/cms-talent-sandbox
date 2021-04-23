@@ -4,7 +4,7 @@ import { keysToCamel } from "./util";
 
 export class ApplicationDataSource extends BasicDataSource {
   constructor(config: Knex.Config | Knex) {
-    super(config, "jobs");
+    super(config, "applications");
   }
 
   getByUserId(id: number) {
