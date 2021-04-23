@@ -66,7 +66,7 @@ const users = [
 
 const jobs = [
   {
-    id: 1, title: { en: "Junior Dev", fr: "Dev petit" }, description: { en: "You'll enjoy working on this awesome project!", fr: "Vous aimerez travaller sur ce projet genial!" },
+    id: 1, title: { en: "Junior Dev", fr: "Dev petit" }, description: { en: "You'll enjoy working on this awesome project!", fr: "Vous aimerez travailler sur ce projet genial!" },
     minSalary: 60000, maxSalary: 70000,
     closeDate: "2021-04-30",
     startDate: "2021-06-01",
