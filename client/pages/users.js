@@ -9,7 +9,7 @@ function Users({ users, error }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main data-h2-container="b(center, full)">
         <h1>GraphQL test</h1>
         {error && <div>There was an error.</div>}
         {!error && users && (
