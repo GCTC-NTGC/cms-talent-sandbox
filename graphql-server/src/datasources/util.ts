@@ -1,16 +1,5 @@
-export function toCamelCase(s: string): string {
-  return s.replace(/([-_][a-z])/ig, ($1) => {
-    return $1.toUpperCase()
-      .replace('-', '')
-      .replace('_', '');
-  });
-};
-
-export function toSnakeCase(s: string): string {
-  return s.replace(/.([A-Z])/g, ($1) => {
-    return `_${$1}`
-  }).toLowerCase();
-}
+import toSnakeCase from "lodash/snakeCase";
+import toCamelCase from "lodash/camelCase";
 
 function isArray (a: any) {
   return Array.isArray(a);
