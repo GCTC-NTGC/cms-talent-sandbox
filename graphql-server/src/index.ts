@@ -50,7 +50,10 @@ const typeDefs = gql`
     users: [User]
     user(id: ID!): User
     jobs: [Job]
+    job(id: ID!): Job
     applications: [Application]
+    application(id: ID!): Application
+    applicationsByJob(jobId: ID!): [Application]
   }
 `;
 
@@ -73,8 +76,17 @@ const resolvers = {
     jobs: async (_parent, _args, {dataSources} ) => {
       return dataSources.job.getAll();
     },
+    job: async(_parent, {id}, {dataSources}) => {
+      return dataSources.job.getById(id);
+    },
     applications: async (_parent, _args, {dataSources}) => {
       return dataSources.application.getAll();
+    },
+    application: async(_parent, {id}, {dataSources}) => {
+      return dataSources.application.getById({id});
+    },
+    applicationsByJob: async (_parent, {jobId}, {dataSources}) => {
+      return dataSources.application.getByJobId(jobId);
     }
   },
   Application: {

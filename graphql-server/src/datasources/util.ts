@@ -27,16 +27,16 @@ function isObject(x: any) {
  * @param x 
  */
 function transformKeys(transformer: (key: string) => string, x: any) {
-  const recurse = (item: any) => transformKeys(transformer, item);
   if (typeof x === 'string') {
     return transformer(x);
   }
   if (isArray(x)) {
+    const recurse = (item: any) => transformKeys(transformer, item);
     return x.map(recurse);
   }
   if (isObject(x)) {
     return Object.entries(x).reduce((out: any, [key, value]) => {
-      out[toCamelCase(key)] = value;
+      out[transformer(key)] = value;
       return out;
     }, {});
   }
