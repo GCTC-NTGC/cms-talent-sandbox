@@ -7,6 +7,17 @@ export const jobs = [
     max_salary: 70000,
     close_date: "2021-04-30",
     start_date: "2021-06-01",
+    status: "draft"
+  },
+  {
+    id: 2,
+    title: { en: "Exec", fr: "Executif" }, 
+    description: { en: "Boss people around!", fr: "Commondez les autres!" },
+    min_salary: 90000,
+    max_salary: 100000,
+    close_date: "2021-04-30",
+    start_date: "2021-06-01",
+    status: "published"
   }
 ];
 

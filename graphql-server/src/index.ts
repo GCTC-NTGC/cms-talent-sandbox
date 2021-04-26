@@ -28,6 +28,11 @@ const typeDefs = gql`
     lastName: String!
   }
 
+  enum JobStatus {
+    DRAFT
+    PUBLISHED
+  }
+
   type Job {
     id: ID
     title: LocalizedField
@@ -36,6 +41,12 @@ const typeDefs = gql`
     maxSalary: Int
     closeDate: Date
     startDate: Date
+    status: JobStatus!
+  }
+
+  enum ApplicationStatus {
+    DRAFT
+    SUBMITTED
   }
 
   type Application {
@@ -44,6 +55,7 @@ const typeDefs = gql`
     user: User!
     interest: String
     preferredLang: Locale
+    status: ApplicationStatus
   }
 
   type Query {
@@ -55,6 +67,26 @@ const typeDefs = gql`
     application(id: ID!): Application
     applicationsByJob(jobId: ID!): [Application]
   }
+
+  input LocalizedFieldInput {
+    en: String
+    fr: String
+  }
+
+  input JobInput {
+    title: LocalizedFieldInput
+    description: LocalizedFieldInput
+    minSalary: Int
+    maxSalary: Int
+    closeDate: Date
+    startDate: Date
+  }
+
+  type Mutation {
+    createJob(job: JobInput): Job
+    updateJob(id: ID!, job: JobInput!): Job
+    publishJob(id: ID!): Job
+  }
 `;
 
 // Resolvers define the technique for fetching the types defined in the
@@ -65,6 +97,14 @@ const resolvers = {
   Locale: {
     EN: "en",
     FR: "fr",
+  },
+  JobStatus: {
+    DRAFT: "draft",
+    PUBLISHED: "published"
+  },
+  ApplicationStatus: {
+    DRAFT: "draft",
+    SUBMITTED: "submitted"
   },
   Query: {
     users: async (_parent, _args, {dataSources} ) => {
@@ -88,6 +128,19 @@ const resolvers = {
     applicationsByJob: async (_parent, {jobId}, {dataSources}) => {
       return dataSources.application.getByJobId(jobId);
     }
+  },
+  Mutation: {
+    createJob: async (_parent, {job}, {dataSources}) => {
+      // All jobs start as drafts.
+      // TODO: Should this be here in the resolver, or in the Model/Data Source?
+      return dataSources.job.create({...job, status: "draft"});
+    },
+    updateJob: async (_parent, {id, job}, {dataSources}) => {
+      return dataSources.job.update(id, job);
+    },
+    publishJob: async (_parent, {id}, {dataSources}) => {
+      return dataSources.job.update(id, {status: "published"});
+    },
   },
   Application: {
     job(parent, _args, {dataSources}) {
