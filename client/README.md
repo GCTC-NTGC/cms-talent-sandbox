@@ -20,10 +20,16 @@ Install node packages:
 npm i
 ```
 
+Compile Hydrogen (needs to run whenever `hydrogen.config.json` is changed):
+
+```bash
+npx h2-compile
+```
+
 Run the development server:
 
 ```bash
-npx h2-compile & npm run dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
