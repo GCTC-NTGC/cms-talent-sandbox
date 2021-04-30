@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint . --ext .js,.ts",
     "lint:fix": "eslint . --fix --ext .js,.ts",
+    "prettier": "prettier --write .",
     "start": "ts-node src/index.ts",
     "build": "tsc",
     "db:migrate": "knex migrate:latest",
@@ -30,8 +31,10 @@
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
     "knex": "^0.95.4",
     "pg": "^8.6.0",
+    "prettier": "^2.2.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   }
