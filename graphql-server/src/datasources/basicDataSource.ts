@@ -3,11 +3,11 @@ import { Knex } from "knex";
 import { keysToCamel, keysToSnake } from "./util";
 
 interface Entity {
-  id: number
+  id: number;
 }
 
 export class BasicDataSource extends SQLDataSource {
-  table: string
+  table: string;
 
   constructor(config: Knex.Config | Knex, table: string) {
     super(config as any);
@@ -16,28 +16,40 @@ export class BasicDataSource extends SQLDataSource {
 
   create(item: Record<string, any>) {
     // The implementation is actually identical to createMany, except we know to only return a single item.
-    return this.createMany([item])
-      .then(items => items[0]); // Returns undefined if no row was created.
+    return this.createMany([item]).then((items) => items[0]); // Returns undefined if no row was created.
   }
   createMany(items: Array<Record<string, any>>) {
-    return this.knex(this.table).insert(keysToSnake(items))
+    return this.knex(this.table)
+      .insert(keysToSnake(items))
       .returning("*")
       .then(keysToCamel);
   }
   getById(id: number) {
-    return this.knex(this.table).where("id", id).select("*").first().cache().then(keysToCamel);
+    return this.knex(this.table)
+      .where("id", id)
+      .select("*")
+      .first()
+      .cache()
+      .then(keysToCamel);
   }
   getAll() {
     return this.knex.select("*").from(this.table).cache().then(keysToCamel);
   }
   getWhere(props: Record<string, any>) {
-    return this.knex.select("*").from(this.table).where(keysToSnake(props)).cache().then(keysToCamel);
+    return this.knex
+      .select("*")
+      .from(this.table)
+      .where(keysToSnake(props))
+      .cache()
+      .then(keysToCamel);
   }
   update(id: number, item: Record<string, any>) {
-    return this.knex(this.table).where("id", id).update(keysToSnake(item))
+    return this.knex(this.table)
+      .where("id", id)
+      .update(keysToSnake(item))
       .returning("*")
       .then(keysToCamel)
-      .then(items => items[0]); // Returns undefined if no row was updated.
+      .then((items) => items[0]); // Returns undefined if no row was updated.
   }
   deleteById(id: number) {
     return this.knex(this.table).where("id", id).delete();

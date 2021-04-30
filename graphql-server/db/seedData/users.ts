@@ -16,7 +16,7 @@ export const users = [
     email: "test@manager.com",
     first_name: "Gray",
     last_name: "Manager",
-  }
+  },
 ];
 
 export default users;

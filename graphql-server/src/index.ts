@@ -1,13 +1,12 @@
 // import { ApolloServer } from "apollo-server";
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer, gql } from "apollo-server";
 import { DateResolver, EmailAddressResolver } from "graphql-scalars";
-import {UserDataSource} from "./datasources/user";
-import {JobDataSource} from "./datasources/job";
-import {ApplicationDataSource} from "./datasources/application";
+import { UserDataSource } from "./datasources/user";
+import { JobDataSource } from "./datasources/job";
+import { ApplicationDataSource } from "./datasources/application";
 import knexConfig from "../knexfile.js";
 
 const typeDefs = gql`
-
   scalar Date
   scalar EmailAddress
 
@@ -100,56 +99,56 @@ const resolvers = {
   },
   JobStatus: {
     DRAFT: "draft",
-    PUBLISHED: "published"
+    PUBLISHED: "published",
   },
   ApplicationStatus: {
     DRAFT: "draft",
-    SUBMITTED: "submitted"
+    SUBMITTED: "submitted",
   },
   Query: {
-    users: async (_parent, _args, {dataSources} ) => {
+    users: async (_parent, _args, { dataSources }) => {
       return dataSources.user.getAll();
     },
-    user: async (_parent, {id}, {dataSources}) => {
+    user: async (_parent, { id }, { dataSources }) => {
       return dataSources.user.getById(id);
     },
-    jobs: async (_parent, _args, {dataSources} ) => {
+    jobs: async (_parent, _args, { dataSources }) => {
       return dataSources.job.getAll();
     },
-    job: async(_parent, {id}, {dataSources}) => {
+    job: async (_parent, { id }, { dataSources }) => {
       return dataSources.job.getById(id);
     },
-    applications: async (_parent, _args, {dataSources}) => {
+    applications: async (_parent, _args, { dataSources }) => {
       return dataSources.application.getAll();
     },
-    application: async(_parent, {id}, {dataSources}) => {
-      return dataSources.application.getById({id});
+    application: async (_parent, { id }, { dataSources }) => {
+      return dataSources.application.getById({ id });
     },
-    applicationsByJob: async (_parent, {jobId}, {dataSources}) => {
+    applicationsByJob: async (_parent, { jobId }, { dataSources }) => {
       return dataSources.application.getByJobId(jobId);
-    }
+    },
   },
   Mutation: {
-    createJob: async (_parent, {job}, {dataSources}) => {
+    createJob: async (_parent, { job }, { dataSources }) => {
       // All jobs start as drafts.
       // TODO: Should this be here in the resolver, or in the Model/Data Source?
-      return dataSources.job.create({...job, status: "draft"});
+      return dataSources.job.create({ ...job, status: "draft" });
     },
-    updateJob: async (_parent, {id, job}, {dataSources}) => {
+    updateJob: async (_parent, { id, job }, { dataSources }) => {
       return dataSources.job.update(id, job);
     },
-    publishJob: async (_parent, {id}, {dataSources}) => {
-      return dataSources.job.update(id, {status: "published"});
+    publishJob: async (_parent, { id }, { dataSources }) => {
+      return dataSources.job.update(id, { status: "published" });
     },
   },
   Application: {
-    job(parent, _args, {dataSources}) {
+    job(parent, _args, { dataSources }) {
       return dataSources.job.getById(parent.jobId);
-    }, 
-    user(parent, _args, {dataSources}) {
+    },
+    user(parent, _args, { dataSources }) {
       return dataSources.user.getById(parent.userId);
-    }
-  }
+    },
+  },
 };
 
 const dataSources = () => ({
@@ -160,10 +159,10 @@ const dataSources = () => ({
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
-const server = new ApolloServer({ 
+const server = new ApolloServer({
   typeDefs,
   resolvers,
-  dataSources
+  dataSources,
 });
 
 // The `listen` method launches a web server.
