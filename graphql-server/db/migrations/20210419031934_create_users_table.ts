@@ -8,8 +8,8 @@ export async function up(knex: Knex): Promise<void> {
     table.string("first_name").notNullable();
     table.string("last_name").notNullable();
   });
-};
+}
 
 export async function down(knex: Knex): Promise<void> {
   return knex.schema.dropTable('users');
-};
+}

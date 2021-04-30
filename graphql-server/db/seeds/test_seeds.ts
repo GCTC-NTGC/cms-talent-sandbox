@@ -18,4 +18,4 @@ export async function seed(knex: Knex): Promise<void> {
     await resetAutoInc(knex, "users");
     await resetAutoInc(knex, "jobs");
     await resetAutoInc(knex, "applications");
-};
+}

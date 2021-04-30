@@ -11,8 +11,8 @@ export async function up(knex: Knex): Promise<void> {
     table.foreign("user_id").references("id").inTable("users").onDelete("CASCADE").onUpdate("CASCADE");
     table.foreign("job_id").references("id").inTable("jobs").onDelete("NO ACTION").onUpdate("CASCADE");
   })
-};
+}
 
 export async function down(knex: Knex): Promise<void> {
   return knex.schema.dropTable("applications");
-};
+}

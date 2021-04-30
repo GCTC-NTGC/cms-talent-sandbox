@@ -10,8 +10,8 @@ export async function up(knex: Knex): Promise<void> {
     table.date("close_date").nullable();
     table.date("start_date").nullable();
   });
-};
+}
 
 export async function down(knex: Knex): Promise<void> {
   return knex.schema.dropTable('jobs');
-};
+}

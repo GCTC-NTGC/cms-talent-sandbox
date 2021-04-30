@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const repl = require("repl");
 const knex = require("knex");
 const knexConfig = require("../knexfile.js");

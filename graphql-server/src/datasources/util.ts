@@ -3,7 +3,7 @@ import toCamelCase from "lodash/camelCase";
 
 function isArray (a: any) {
   return Array.isArray(a);
-};
+}
 
 function isObject(x: any) {
   return typeof x === 'object' && x !== null && x !== undefined && !isArray(x);
