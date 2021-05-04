@@ -1,4 +1,3 @@
-// import { ApolloServer } from "apollo-server";
 import { ApolloServer } from "apollo-server";
 import { UserDataSource } from "./datasources/user";
 import { JobDataSource } from "./datasources/job";

@@ -15,10 +15,10 @@ const config = {
   },
   migrations: {
     tableName: "knex_migrations",
-    directory: "./db/migrations",
+    directory: "./src/db/migrations",
   },
   seeds: {
-    directory: "./db/seeds", // This could be split into dev and production folders.
+    directory: "./src/db/seeds", // This could be split into dev and production folders.
   },
 };
 
