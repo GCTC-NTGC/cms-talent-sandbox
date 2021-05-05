@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "laravel/lumen-framework": "^8.0",
+        "laravel/tinker": "^2.6",
         "laravelista/lumen-vendor-publish": "8.0",
         "mll-lab/laravel-graphql-playground": "^2.5",
         "nuwave/lighthouse": "^5.8"

@@ -11,8 +11,8 @@ type LocalizedString {
 
 type User {
     id: ID!
-    firstName: String!
-    lastName: String!
+    firstName: String! @rename(attribute: "first_name")
+    lastName: String! @rename(attribute: "last_name")
     email: String!
 }
 
@@ -23,7 +23,7 @@ type Skill {
 }
 
 type Query {
-    users: [User!]! @paginate(defaultCount: 10)
+    users: [User!]! @all
     user(id: ID @eq): User @find
     # skills: [Skill!]!
 }

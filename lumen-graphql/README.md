@@ -3,8 +3,10 @@
 1. Ensure php and composer are installed. 
 2. Install dependencies with `composer install`
 3. Copy .env.example to .env and configure your local environment. Make sure to add a random string as your APP_KEY.
-4. Start a development server with `php -S localhost:8000 -t public`
-5. Visit http://localhost:8000/graphql-playground to explore the API.
+4. Ensure pdo_pgsql is enabled in php by uncommenting the line `extension=pdo_pgsql` in your php.ini file.
+5. Run `php artisan migrate:fresh` to create database tables, and `php artisan db:seed` if you want to create test data.
+6. Start a development server with `php -S localhost:8000 -t public`
+7. Visit http://localhost:8000/graphql-playground to explore the API.
 
 ## Local Development
 
