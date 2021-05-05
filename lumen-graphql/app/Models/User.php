@@ -9,6 +9,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
+/**
+ * Class User
+ *
+ * @property int $id
+ * @property string $email
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $password
+ */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable, HasFactory;
@@ -19,7 +28,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'fist_name',
+        'last_name',
+        'email',
     ];
 
     /**
@@ -28,6 +39,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $hidden = [
-        'password',
+        // 'password',
     ];
 }

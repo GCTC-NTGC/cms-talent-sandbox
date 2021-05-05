@@ -95,6 +95,7 @@ $app->configure('app');
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\Nuwave\Lighthouse\LighthouseServiceProvider::class);
+$app->register(MLL\GraphQLPlayground\GraphQLPlaygroundServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
