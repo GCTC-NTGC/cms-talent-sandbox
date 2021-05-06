@@ -1,4 +1,4 @@
-
+import '../styles/hydrogen.css'
 import Menu from '../components/menu.js'
 
 function ClientApp({ Component, pageProps }) {

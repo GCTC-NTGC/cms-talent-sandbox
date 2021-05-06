@@ -1,0 +1,13 @@
+{
+  "folders": {
+    "markup": [
+      "components",
+      "pages"
+    ],
+    "styles": "styles"
+  },
+  "flexgrid": {
+    "enabled": true,
+    "columns": 12
+  }
+}

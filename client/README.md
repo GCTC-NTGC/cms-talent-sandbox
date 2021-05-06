@@ -20,6 +20,12 @@ Install node packages:
 npm i
 ```
 
+Compile Hydrogen (needs to run whenever `hydrogen.config.json` is changed):
+
+```bash
+npx h2-compile
+```
+
 Run the development server:
 
 ```bash
@@ -41,8 +47,8 @@ docker run -p 3000:3000 client-next-js-app
 
 ## Production
 
-Run the production application:
+Build and run the production application:
 
 ```bash
-npm run build && npm run start
+npx h2-build && npm run build && npm run start
 ```

@@ -7,8 +7,7 @@ function Home({ users }) {
         <title>Hello World</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main>
+      <main data-h2-container="b(center, full)">
         <h1>getStaticProps test</h1>
         <ol>
         { users && users.map((user, key) => {

@@ -8,15 +8,15 @@ export class ApplicationDataSource extends BasicDataSource {
   }
 
   getByUserId(id: number) {
-    return this.getWhere({"user_id": id});
+    return this.getWhere({ user_id: id });
   }
 
   getByJobId(id: number) {
-    return this.getWhere({"job_id": id});
+    return this.getWhere({ job_id: id });
   }
-  
+
   getByJobAndUser(jobId: number, userId: number) {
-    return this.getWhere({jobId, userId});
+    return this.getWhere({ jobId, userId });
   }
 }
 

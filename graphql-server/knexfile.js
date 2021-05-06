@@ -1,10 +1,11 @@
-require('ts-node/register');
+/* eslint-disable @typescript-eslint/no-var-requires */
+require("ts-node/register");
 const dotenv = require("dotenv");
 
 const parsed = dotenv.config();
 
 const config = {
-  client: 'pg',
+  client: "pg",
   connection: {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -13,12 +14,12 @@ const config = {
     database: process.env.DB_DATABASE,
   },
   migrations: {
-    tableName: 'knex_migrations',
-    directory: './db/migrations'
+    tableName: "knex_migrations",
+    directory: "./src/db/migrations",
   },
   seeds: {
-    directory: './db/seeds' // This could be split into dev and production folders.
-  }
+    directory: "./src/db/seeds", // This could be split into dev and production folders.
+  },
 };
 
 // export default config;
