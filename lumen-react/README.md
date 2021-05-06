@@ -1,3 +1,21 @@
+# Getting Started
+
+1. Ensure PHP (PHP >= 7.3) and Composer are installed
+2. Ensure the following extensions are enabled:
+    * OpenSSL PHP Extension
+    * PDO PHP Extension
+    * Mbstring PHP Extension
+3. Run `composer install` and `npm install` to install dependencies.
+4. Run `npm run dev` which will bundle up our assets.
+5. Start a development server with `php -S localhost:8080 -t public/`.
+6. Visit https://localhost:8000 to view page.
+
+# Next Steps
+
+- Install Hydrogen
+- Finish "watch" mode with hot reloading using browserSync.
+- Add Eslint and Prettier configuration.
+
 # Lumen PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
