@@ -1,5 +1,19 @@
 {
-  "eslint.workingDirectories": [
-    "graphql-server"
-  ]
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/vendor/**": true
+  },
+  "php.suggest.basic": false,
+  "phpcs.standard": "./ruleset.xml",
+  "workbench.settings.useSplitJSON": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.workingDirectories": ["graphql-server", "lumen-react"]
 }
