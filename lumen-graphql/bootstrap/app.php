@@ -61,6 +61,7 @@ $app->singleton(
 
 $app->configure('app');
 $app->configure('trustedproxy');
+$app->configure('lighthouse');
 
 
 /*
@@ -97,6 +98,12 @@ $app->configure('trustedproxy');
 $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\Nuwave\Lighthouse\LighthouseServiceProvider::class);
+$app->register(\Nuwave\Lighthouse\GlobalId\GlobalIdServiceProvider::class);
+$app->register(\Nuwave\Lighthouse\OrderBy\OrderByServiceProvider::class);
+$app->register(\Nuwave\Lighthouse\Pagination\PaginationServiceProvider::class);
+$app->register(\Nuwave\Lighthouse\Scout\ScoutServiceProvider::class);
+$app->register(\Nuwave\Lighthouse\SoftDeletes\SoftDeletesServiceProvider::class);
+$app->register(\Nuwave\Lighthouse\Validation\ValidationServiceProvider::class);
 $app->register(MLL\GraphQLPlayground\GraphQLPlaygroundServiceProvider::class);
 $app->register(\Fideloper\Proxy\TrustedProxyServiceProvider::class);
 $app->register(\Laravel\Tinker\TinkerServiceProvider::class);
