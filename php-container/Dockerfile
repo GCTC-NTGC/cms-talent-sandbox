@@ -1,7 +1,10 @@
 FROM php:7.4-apache
-COPY src/ /var/www/html/
-COPY ../lumen-react /var/www/html/lumen-react
-COPY ../lumen-graphql /var/www/html/lumen-graphql
+
+RUN a2enmod rewrite
+
+# COPY src/ /var/www/html/
+# COPY ../lumen-react /var/www/html/lumen-react
+# COPY ../lumen-graphql /var/www/html/lumen-graphql
 
 
 # FROM appsvc/php

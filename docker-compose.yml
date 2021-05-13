@@ -23,8 +23,8 @@ services:
       - 8080:8080
 
   php:
-    # build: ./php-container
-    image: php:7.4-apache
+    build: ./php-container
+    # image: php:7.4-apache
     working_dir: /var/www/html
     restart: always
     volumes:
