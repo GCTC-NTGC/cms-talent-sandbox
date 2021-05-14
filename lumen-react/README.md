@@ -6,15 +6,10 @@
     * PDO PHP Extension
     * Mbstring PHP Extension
 3. Run `composer install` and `npm install` to install dependencies.
+4. If you are developing run `npm run h2-compile`. This will provide all the H2 style attributes. If you need a production ready css file then run `npm run h2-build`.
 4. Run `npm run dev` which will bundle up our assets.
 5. Start a development server with `php -S localhost:8080 -t public/`.
 6. Visit https://localhost:8080 to view page.
-
-# Next Steps
-
-- Install Hydrogen
-- Finish "watch" mode with hot reloading using browserSync.
-- Add Eslint and Prettier configuration.
 
 # Lumen PHP Framework
 
