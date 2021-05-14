@@ -15,6 +15,5 @@
 <body>
   <div id="app"></div>
   <script src="{{ mix("js/app.js") }}"></script>
-  <img src="images/logo_canada_colour.png" alt="">
 </body>
 </html>
