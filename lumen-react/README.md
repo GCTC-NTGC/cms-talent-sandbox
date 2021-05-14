@@ -5,11 +5,12 @@
     * OpenSSL PHP Extension
     * PDO PHP Extension
     * Mbstring PHP Extension
-3. Run `composer install` and `npm install` to install dependencies.
-4. If you are developing run `npm run h2-compile`. This will provide all the H2 style attributes. If you need a production ready css file then run `npm run h2-build`.
-4. Run `npm run dev` which will bundle up our assets.
-5. Start a development server with `php -S localhost:8080 -t public/`.
-6. Visit https://localhost:8080 to view page.
+3. Run `composer install` and `npm install` to install dependencies. After the node packages are installed, run `npm rebuild node-sass` incase vendor folder isn't created. (Error: https://github.com/sass/node-sass/issues/1579).
+4. Copy .env.example to .env and configure your local environment. Make sure to add a random string as your APP_KEY.
+5. If you are developing run `npm run h2-compile`. This will provide all the H2 style attributes. If you need a production ready css file then run `npm run h2-build`.
+6. Run `npm run dev` which will bundle up our assets.
+7. Start a development server with `php -S localhost:8080 -t public/`.
+8. Visit https://localhost:8080 to view page.
 
 # Lumen PHP Framework
 
