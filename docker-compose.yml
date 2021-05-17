@@ -22,5 +22,18 @@ services:
     ports:
       - 8080:8080
 
+  php:
+    build: ./php-container
+    # image: php:7.4-apache
+    working_dir: /var/www/html
+    restart: always
+    volumes:
+      - ./php-container/src:/var/www/html/
+      - ./lumen-react:/var/www/html/lumen-react
+      - ./lumen-graphql:/var/www/html/lumen-graphql
+    ports:
+      - 8000:80
+      - 8001:443
+
 volumes:
   pgdata:
